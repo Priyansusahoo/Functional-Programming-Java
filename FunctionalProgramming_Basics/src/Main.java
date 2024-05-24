@@ -10,13 +10,16 @@ public class Main {
 		
 		System.out.println("Printing Even Numbers");
 		functionalStylePrintEvenNumber(numbersList);
+		
+		System.out.println("--------------------");
+		square(numbersList);
 	}
 
 	/*public static void print(int number) { System.out.println(number); }*/
 	
-	public static boolean isEven(int number) {
+	/*public static boolean isEven(int number) {
 		return number%2==0; // check if number is even or not
-	}
+	}*/
 	
 	private static void functionalStylePrintNumber(List<Integer> numbers) {
 		numbers.stream() // one number at a time
@@ -25,7 +28,13 @@ public class Main {
 	
 	private static void functionalStylePrintEvenNumber(List<Integer> numbers) {
 		numbers.stream()
-		.filter(Main::isEven) // filter & method reference
+		.filter(eachnumber -> eachnumber%2==0) // filter & Lambda Expression
 		.forEach(System.out::println); // 'println' is a static method in 'System.out'
+	}
+	
+	private static void square(List<Integer> numbers) {
+		numbers.stream()
+		.map(number -> number * number) // map
+		.forEach(System.out::println);
 	}
 }
