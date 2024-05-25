@@ -3,7 +3,8 @@ import java.util.List;
 public class Main {
 
 	public static void main(String[] args) {
-		List<Integer> numbers = List.of(1,2,3);
+		List<Integer> numbers = List.of(1,2,3,1,2,8,9,12,1,56,84,33,35,3,56);
+		
 		System.out.println("The sum is = " + sumOfNumbers(numbers));
 		System.out.println("-----------------");
 		
@@ -14,6 +15,15 @@ public class Main {
 		System.out.println("-----------------");
 		
 		System.out.println("Sum of Odd = " + sumOfOdd(numbers));
+		System.out.println("-----------------");
+		
+		distinctNo(numbers);
+		System.out.println("-----------------");
+		
+		sortedNo(numbers);
+		System.out.println("-----------------");
+		
+		distinctAndSortedNo(numbers);
 		System.out.println("-----------------");
 	}
 	
@@ -39,5 +49,24 @@ public class Main {
 		return numbers.stream()
 				.filter(number -> number%2 !=0)
 				.reduce(0, (a,b) -> a+b);
+	}
+	
+	public static void distinctNo(List<Integer> numbers) {
+		numbers.stream()
+		.distinct() // distinct
+		.forEach(System.out::println);
+	}
+	
+	public static void sortedNo(List<Integer> numbers) {
+		numbers.stream()
+		.sorted() // sort
+		.forEach(System.out::println);
+	}
+	
+	public static void distinctAndSortedNo(List<Integer> numbers) {
+		numbers.stream()
+		.distinct() // will select distinct numbers
+		.sorted() // this will sort the numbers
+		.forEach(System.out::println);
 	}
 }
